@@ -7,7 +7,7 @@ getHttp()
 
 function getHttp () {
   for (var i = 0; i < 3; ++i) {
-    http.get(url[i], (response, i) => gotHttp).on('error', console.error)
+    http.get(url[i], (response) => gotHttp(response, i)).on('error', console.error)
   }
 }
 
@@ -15,7 +15,7 @@ function gotHttp (response, i) {
   response.setEncoding('utf8')
   response.on('error', console.error)
   response.on('data', function (data) {
-    console.log(data)
+    //console.log(data)
     dataBuf[i] += data
   })
   response.on('end', function () {
